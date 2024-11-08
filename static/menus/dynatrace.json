@@ -1,0 +1,25 @@
+[
+    {
+        "name": "Dynatrace",
+        "icon": "mdi-alert-circle",
+        "menu": [
+            {
+                "name": "Problemas",
+                "to": "/problemas",
+                "icon": "mdi-alert-circle-outline"
+            }
+        ],
+        "submenus": [
+            {
+                "name": "Comentários",
+                "to": "/problemas/comentarios",
+                "icon": "mdi-comment-text"
+            },
+            {
+                "name": "Entities",
+                "to": "/problemas/entities",
+                "icon": "mdi-card-multiple"
+            }
+        ]
+    }
+]

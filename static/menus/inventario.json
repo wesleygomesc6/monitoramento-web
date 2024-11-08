@@ -1,0 +1,71 @@
+[
+    {
+        "name": "Inventário",
+        "icon": "mdi-lock-check-outline",
+        "menu": [
+            {
+                "name": "Host",
+                "to": "/",
+                "icon": "mdi-monitor-dashboard"
+            }
+        ],
+        "submenus": [
+            {
+                "name": "Ambientes",
+                "to": "/inventario/ambientes",
+                "icon": "mdi-developer-board"
+            },
+            {
+                "name": "Cargos",
+                "to": "/inventario/cargos",
+                "icon": "mdi-badge-account-alert"
+            },
+            {
+                "name": "Clusters",
+                "to": "/inventario/clusters",
+                "icon": "mdi-server-network"
+            },
+            {
+                "name": "Gerências",
+                "to": "/inventario/gerencias",
+                "icon": "mdi-badge-account-horizontal-outline"
+            },
+            {
+                "name": "Grupos",
+                "to": "/inventario/grupos",
+                "icon": "mdi-group"
+            },
+            {
+                "name": "Pessoas",
+                "to": "/inventario/pessoas",
+                "icon": "mdi-account-group"
+            },
+            {
+                "name": "Responsaveis",
+                "to": "/inventario/responsaveis",
+                "icon": "mdi-badge-account"
+            },
+            {
+                "name": "Tercnologias",
+                "to": "/inventario/tecnologias",
+                "icon": "mdi-cellphone-link"
+            },
+            {
+                "name": "Serviços",
+                "to": "/inventario/servicos",
+                "icon": "mdi-inbox-multiple"
+            },
+            {
+                "name": "Contratação",
+                "to": "/inventario/tipos-contratacao",
+                "icon": "mdi-file-document-edit"
+            },
+            {
+                "name": "Tipos Vm",
+                "to": "/inventario/tiposvm",
+                "icon": "mdi-monitor-multiple"
+            }
+            
+        ]
+    }
+]
