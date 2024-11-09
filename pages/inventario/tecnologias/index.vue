@@ -87,10 +87,10 @@ export default {
       dialogDelete: false,
       tecnologia: new Tecnologia(),
       paginacao: {
-        pageNumber: 0,
-        totalPages: 0,
+        pageNumber: 1,
+        totalPages: 5,
         pageSize: 10,
-        totalElements: 0,
+        totalElements: 50,
       },
       headers: [
         { text: "ID", value: "id" },
@@ -138,14 +138,14 @@ export default {
       this.$axios
         .$get(
           this.search == "" || this.search == null
-            ? `${this.$config.inventarioURL}sistemas?page=${this.paginacao.pageNumber}&size=${this.paginacao.pageSize}`
-            : `${this.$config.inventarioURL}sistemas?page=${this.paginacao.pageNumber}&size=${this.paginacao.pageSize}&nome=${this.search}`
+            ? `tecnologias?_page=${this.paginacao.pageNumber}&_limit=${this.paginacao.pageSize}`
+            : `tecnologias?_page=${this.paginacao.pageNumber}&_limit=${this.paginacao.pageSize}&q=${this.search}`
         )
         .then((res) => {
-          this.items = res.content;
-          this.paginacao = res.pageable;
-          this.paginacao.totalPages = res.totalPages;
-          this.paginacao.totalElements = res.totalElements;
+          this.items = res;
+          // this.paginacao = res.pageable;
+          // this.paginacao.totalPages = res.totalPages;
+          // this.paginacao.totalElements = res.totalElements;
         })
         .catch((err) => this.$snotify.error(err, "Algo deu errado!"));
     },

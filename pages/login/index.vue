@@ -24,7 +24,7 @@
             <v-btn color="warning" @click.prevent="reset">
               LIMPAR <v-icon small class="ml-1"> mdi-eraser </v-icon></v-btn
             >
-            <v-btn color="primary" type="submit">
+            <v-btn color="primary" type="submit" :loading="loading">
               ENTRAR <v-icon small class="ml-1"> mdi-login </v-icon></v-btn
             >
           </div>

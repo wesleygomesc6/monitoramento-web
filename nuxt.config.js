@@ -5,7 +5,7 @@ export default {
     titleTemplate: '%s',
     title: 'app-monitoramento',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'pt-BR'
     },
     meta: [
       { charset: 'utf-8' },
@@ -36,7 +36,7 @@ export default {
 
   modules: [
     '@nuxtjs/axios',
-    // '@nuxtjs/auth-next'
+    '@nuxtjs/auth-next'
   ],
 
   router: {
@@ -56,7 +56,7 @@ export default {
     strategies: {
       local: {
         endpoints: {
-          login: { url: process.env.LOGIN_URL, method: 'post', propertyName: 'token' },
+          login: { url: `${process.env.BASE_URL}/auth`, method: 'post', propertyName: 'token' },
           user: false,
           logout: false
         }

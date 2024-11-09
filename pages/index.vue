@@ -49,7 +49,7 @@ export default {
       validated: false,
       filtrarDatas: false,
       paginacao: {
-        pageNumber: 0,
+        pageNumber: 1,
         totalPages: 5,
         pageSize: 10,
         totalElements: 50,

@@ -44,7 +44,7 @@ export default {
     salvar() {
       if (this.modo === -1) {
         this.$axios
-          .$post(`${this.$config.inventarioURL}${this.path}`, this.classe)
+          .$post(`/${this.path}`, this.classe)
           .then(() => {
             this.$snotify.success("", "Cadastrado com sucesso!");
             this.$emit("atualizar");
@@ -56,7 +56,7 @@ export default {
       } else {
         this.$axios
           .$put(
-            `${this.$config.inventarioURL}${this.path}/${this.classe.id}`,
+            `/${this.path}/${this.classe.id}`,
             this.classe
           )
           .then(() => {

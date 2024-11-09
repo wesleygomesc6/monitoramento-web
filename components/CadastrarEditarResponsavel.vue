@@ -105,26 +105,26 @@ export default {
   methods: {
     getCargo() {
       this.$axios
-        .$get(`${this.$config.inventarioURL}cargos?size=100`)
-        .then((res) => (this.optionsCargos = res.content))
+        .$get(`cargos`)
+        .then((res) => (this.optionsCargos = res))
         .catch((err) => console.log(err));
     },
     getGerencia() {
       this.$axios
-        .$get(`${this.$config.inventarioURL}gerencias?size=100`)
-        .then((res) => (this.optionsGerencias = res.content))
+        .$get(`gerencias`)
+        .then((res) => (this.optionsGerencias = res))
         .catch((err) => console.log(err));
     },
     getPessoas() {
       this.$axios
-        .$get(`${this.$config.inventarioURL}pessoas?size=100`)
-        .then((res) => (this.optionsPessoas = res.content))
+        .$get(`pessoas`)
+        .then((res) => (this.optionsPessoas = res))
         .catch((err) => console.log(err));
     },
     getTiposContratacao() {
       this.$axios
-        .$get(`${this.$config.inventarioURL}tipos-contratacao?size=100`)
-        .then((res) => (this.optionsTiposContratacao = res.content))
+        .$get(`tipos-contratacao`)
+        .then((res) => (this.optionsTiposContratacao = res))
         .catch((err) => console.log(err));
     },
     //Método para salvar ou editar um registro dependendo do valor de edited(editedIndex que vem do componente pai), caso o edited recebido for igual a -1 que é o valor que
@@ -133,7 +133,7 @@ export default {
     salvar() {
       if (this.modo === -1) {
         this.$axios
-          .$post(`${this.$config.inventarioURL}${this.path}`, this.classe)
+          .$post(`${this.path}`, this.classe)
           .then(() => {
             this.$snotify.success("", "Cadastrado com sucesso!");
             this.$emit("atualizar");
@@ -145,7 +145,7 @@ export default {
       } else {
         this.$axios
           .$put(
-            `${this.$config.inventarioURL}${this.path}/${this.classe.id}`,
+            `${this.path}/${this.classe.id}`,
             this.classe
           )
           .then(() => {

@@ -22,7 +22,7 @@ export default {
       path: 'entities',
       search: "",
       paginacao: {
-        pageNumber: 0,
+        pageNumber: 1,
         totalPages: 5,
         pageSize: 10,
         totalElements: 50,

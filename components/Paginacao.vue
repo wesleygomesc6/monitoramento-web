@@ -38,7 +38,7 @@
     </v-btn>
     <span class="mx-4 grey--text">
       página
-      {{ paginacao.totalPages == 0 ? '0' : paginacao.pageNumber + 1 }}
+      {{ paginacao.totalPages == 0 ? '0' : paginacao.pageNumber  }}
       de {{ paginacao.totalPages }}
     </span>
     <v-divider vertical />
@@ -68,7 +68,7 @@ export default {
   },
   watch: {
     paginacao(val) {
-      if (val.pageNumber == 0) {
+      if (val.pageNumber == 1) {
         this.prevDisable = true;
       } else {
         this.prevDisable = false;
@@ -87,12 +87,12 @@ export default {
       this.$emit("paginacao", this.paginacao);
     },
     nextPage() {
-      if (this.paginacao.pageNumber + 1 <= this.paginacao.totalPages)
+      if (this.paginacao.pageNumber + 1  <= this.paginacao.totalPages)
         this.paginacao.pageNumber += 1;
       this.$emit("paginacao", this.paginacao);
     },
     formerPage() {
-      if (this.paginacao.pageNumber - 1 >= 0) this.paginacao.pageNumber -= 1;
+      if (this.paginacao.pageNumber -1 >= 0) this.paginacao.pageNumber -= 1;
       this.$emit("paginacao", this.paginacao);
     },
   },

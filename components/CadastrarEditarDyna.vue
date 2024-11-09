@@ -65,7 +65,7 @@ export default {
       this.$axios
         .$get(`/entity-types`)
         .then((res) => {
-          res.content.forEach((element) => {
+          res.forEach((element) => {
             this.types.push(element);
           });
         })

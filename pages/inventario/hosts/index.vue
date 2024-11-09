@@ -106,10 +106,10 @@ export default {
       loading: false,
       semResultados: "Nenhum resultado encontrado",
       paginacao: {
-        pageNumber: 0,
-        totalPages: 0,
+        pageNumber: 1,
+        totalPages: 5,
         pageSize: 10,
-        totalElements: 0,
+        totalElements: 50,
       },
       items: [],
       headers: [
@@ -144,14 +144,14 @@ export default {
       this.$axios
         .$get(
           this.search
-            ? `${this.$config.inventarioURL}vms?filtro=${this.search}&sort=id`
-            : `${this.$config.inventarioURL}vms?page=${this.paginacao.pageNumber}&size=${this.paginacao.pageSize}&sort=id`
+            ? `vms?q=${this.search}&_sort=id`
+            : `vms?_page=${this.paginacao.pageNumber}&_limit=${this.paginacao.pageSize}&_sort=id`
         )
         .then((res) => {
-          this.items = res.content;
-          this.paginacao = res.pageable;
-          this.paginacao.totalPages = res.totalPages;
-          this.paginacao.totalElements = res.totalElements;
+          this.items = res;
+          // this.paginacao = res.pageable;
+          // this.paginacao.totalPages = res.totalPages;
+          // this.paginacao.totalElements = res.totalElements;
         })
         .catch((err) => this.$snotify.error(err, "Algo deu errado!"));
       this.loading = false;
