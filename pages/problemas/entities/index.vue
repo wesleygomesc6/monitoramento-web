@@ -23,9 +23,9 @@ export default {
       search: "",
       paginacao: {
         pageNumber: 0,
-        totalPages: 0,
+        totalPages: 5,
         pageSize: 10,
-        totalElements: 0,
+        totalElements: 50,
       },
       headers: [
         { text: "ID", value: "id" },
@@ -55,11 +55,11 @@ export default {
     getEntities() {
       this.$axios
         .$get(
-          `entities?_page=${this.paginacao.pageNumber}&_limit=${this.paginacao.pageSize}&filtro=${this.search}`
+          `entities?_page=${this.paginacao.pageNumber}&_limit=${this.paginacao.pageSize}&q=${this.search}`
         )
         .then((res) => {
-          this.items = res.content;
-          this.paginacao = res.data.pageable;
+          this.items = res;
+          // this.paginacao = res.data.pageable;
           // this.paginacao.totalPages = res.data.totalPages;
           // this.paginacao.totalElements = res.data.totalElements;
         })

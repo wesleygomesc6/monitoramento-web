@@ -50,9 +50,9 @@ export default {
       filtrarDatas: false,
       paginacao: {
         pageNumber: 0,
-        totalPages: 0,
+        totalPages: 5,
         pageSize: 10,
-        totalElements: 0,
+        totalElements: 50,
       },
       headers: [
         { text: "ID", value: "id" },
@@ -114,19 +114,19 @@ export default {
     getProblemasValidated() {
       let url = "";
       if (this.search == null || (this.search == "" && this.filtrarDatas == false)) {
-        url = `problemas/validated?validated=${this.validated}&page=${this.paginacao.pageNumber}&size=${this.paginacao.pageSize}`;
+        url = `problemas?validated=${this.validated}&_page=${this.paginacao.pageNumber}&_limit=${this.paginacao.pageSize}`;
       } else if (this.search != null && this.filtrarDatas == false) {
-        url = `problemas/validated?validated=${this.validated}&filtro=${this.search}&page=${this.paginacao.pageNumber}&size=${this.paginacao.pageSize}`;
+        url = `problemas?validated=${this.validated}&filtro=${this.search}&_page=${this.paginacao.pageNumber}&_limit=${this.paginacao.pageSize}`;
       } else {
-        url = `problemas/validated?validated=${this.validated}&filtro=${this.search}&inicio=${this.intervalo[0]}&fim=${this.intervalo[1]}&page=${this.paginacao.pageNumber}&size=${this.paginacao.pageSize}`;
+        url = `problemas?validated=${this.validated}&filtro=${this.search}&inicio=${this.intervalo[0]}&fim=${this.intervalo[1]}&_page=${this.paginacao.pageNumber}&_limit=${this.paginacao.pageSize}`;
       }
       this.$axios
         .$get(url)
         .then((res) => {
-          this.items = res.content;
-          this.paginacao = res.pageable;
-          this.paginacao.totalPages = res.totalPages;
-          this.paginacao.totalElements = res.totalElements;
+          this.items = res;
+          // this.paginacao = res.pageable;
+          // this.paginacao.totalPages = res.totalPages;
+          // this.paginacao.totalElements = res.totalElements;
         })
         .catch((err) => this.$snotify.error(err, "Erro!"));
     },
@@ -134,22 +134,21 @@ export default {
       this.tab = 0;
       let url = "";
       if (this.search == null || (this.search == "" && this.filtrarDatas == false)) {
-        url = `problemas`;
-        // url = `problemas?page=${this.paginacao.pageNumber}&size=${this.paginacao.pageSize}`;
+        url = `problemas?_page=${this.paginacao.pageNumber}&_limit=${this.paginacao.pageSize}`;
       } else if (this.search != null && this.filtrarDatas == false) {
-        url = `problemas?filtro=${this.search}&page=${this.paginacao.pageNumber}&size=${this.paginacao.pageSize}`;
+        url = `problemas?q=${this.search}&_page=${this.paginacao.pageNumber}&_limit=${this.paginacao.pageSize}`;
       } else if (
         this.search == null ||
         (this.search == "" && this.filtrarDatas == true)
       ) {
-        url = `problemas?inicio=${this.intervalo[0]}&fim=${this.intervalo[1]}&page=${this.paginacao.pageNumber}&size=${this.paginacao.pageSize}`;
+        url = `problemas?inicio=${this.intervalo[0]}&fim=${this.intervalo[1]}&_page=${this.paginacao.pageNumber}&_limit=${this.paginacao.pageSize}`;
       } else {
-        url = `problemas?filtro=${this.search}&inicio=${this.intervalo[0]}&fim=${this.intervalo[1]}&page=${this.paginacao.pageNumber}&size=${this.paginacao.pageSize}`;
+        url = `problemas?filtro=${this.search}&inicio=${this.intervalo[0]}&fim=${this.intervalo[1]}&_page=${this.paginacao.pageNumber}&_limit=${this.paginacao.pageSize}`;
       }
       this.$axios
         .$get(url)
         .then((res) => {
-          this.items = res.content;
+          this.items = res;
           // this.paginacao = res.pageable;
           // this.paginacao.totalPages = res.totalPages;
           // this.paginacao.totalElements = res.totalElements;

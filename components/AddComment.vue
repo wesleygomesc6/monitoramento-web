@@ -33,7 +33,8 @@ export default {
   data() {
     return {
       comentario: {
-        authorName: this.$auth.$storage.getLocalStorage('user'),
+        // authorName: this.$auth.$storage.getLocalStorage('user'),
+        authorName: "wesleycarvalho",
         content: "",
         problem: {
           id: this.idProblema,
@@ -44,7 +45,7 @@ export default {
   methods: {
     save() {
       this.$axios
-        .$post(`/comentarios`, this.comentario)
+        .$post(`/comments`, this.comentario)
         .then((res) => {
           this.$emit("atualizar-comment", res);
           this.cancelar();

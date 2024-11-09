@@ -18,20 +18,20 @@ export default {
   data() {
     return {
       items: [],
-      path: 'comentarios', // usado na url para as requisições
+      path: 'comments', // usado na url para as requisições
       titulo: "Comentários",
       search: "",
       paginacao: {
         pageNumber: 0,
-        totalPages: 0,
+        totalPages: 5,
         pageSize: 10,
-        totalElements: 0,
+        totalElements: 50,
       },
       headers: [
         { text: "ID", value: "id" },
         { text: "AUTOR", value: "authorName" },
         { text: "COMENTÁRIO", value: "content" },
-        { text: "ID PROBLEMA", value: "problemId" },
+        { text: "ID PROBLEMA", value: "problem.id" },
         { text: "OPÇÕES", value: "actions" },
       ],
     };
@@ -55,13 +55,13 @@ export default {
     getComments() {
       this.$axios
         .$get(
-          `comentarios?page=${this.paginacao.pageNumber}&size=${this.paginacao.pageSize}&filtro=${this.search}`
+          `comments?_page=${this.paginacao.pageNumber}&_limit=${this.paginacao.pageSize}&q=${this.search}`
         )
         .then((res) => {
-          this.items = res.content;
-          this.paginacao = res.pageable;
-          this.paginacao.totalPages = res.totalPages;
-          this.paginacao.totalElements = res.totalElements;
+          this.items = res;
+          // this.paginacao = res.pageable;
+          // this.paginacao.totalPages = res.totalPages;
+          // this.paginacao.totalElements = res.totalElements;
         })
         .catch((err) => this.$snotify.error(err, "Algo deu errado!"));
     },

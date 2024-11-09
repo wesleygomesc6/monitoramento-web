@@ -237,7 +237,7 @@ export default {
   created() {
     this.$axios
       .$get(`/impact-levels`)
-      .then((res) => (this.levelsImpact = res.content))
+      .then((res) => (this.levelsImpact = res))
       .catch((err) => console.log(err));
   },
   watch: {
@@ -290,14 +290,14 @@ export default {
     getEntities(valor, rotulo) {
       // 0 => afetadas ; 1 => impactadas
       this.$axios
-        .$get(`/entities?filtro=${valor}`)
+        .$get(`/entities?q=${valor}`)
         .then((res) => {
           if (rotulo == 0) {
-            res.content.forEach((element) => {
+            res.forEach((element) => {
               this.afetadas.push(element);
             });
           } else if (rotulo == 1) {
-            res.content.forEach((element) => {
+            res.forEach((element) => {
               this.impactadas.push(element);
             });
           }
@@ -307,7 +307,7 @@ export default {
     getTypes() {
       if (this.entityTypes.length == 0) {
         this.$axios.$get("entity-types").then((res) =>
-          res.content.forEach((element) => {
+          res.forEach((element) => {
             if (element.name != "DATABASE") {
               this.entityTypes.push(element.name);
             }
@@ -318,10 +318,10 @@ export default {
     getRootCause(valor) {
       if (valor != null) {
         this.$axios
-          .$get(`/entities?filtro=${valor}`)
+          .$get(`/entities?q=${valor}`)
           .then((res) => {
-            if (res.content.length > 0) {
-              this.rootCauses = res.content;
+            if (res.length > 0) {
+              this.rootCauses = res;
               this.alertNotExist = false;
             } else {
               this.getTypes();
@@ -364,7 +364,7 @@ export default {
     getSolvers(valor) {
       if (valor != null) {
         this.$axios
-          .$get(`/problemas/solvers?nome=${valor}`)
+          .$get(`/solvers?q=${valor}`)
           .then((res) => {
             res.forEach((element) => {
               if (element != null && !this.solvers.includes(element)) {
@@ -390,14 +390,14 @@ export default {
             .then((res) => {
               this.$axios
                 .$get(
-                  `entities?filtro=${
+                  `entities?q=${
                     item.rootCauseEntity.entityId
                       ? item.rootCauseEntity.entityId
                       : item.rootCauseEntity.name
                   }`
                 )
                 .then((res) => {
-                  item.rootCauseEntity = res.content[0];
+                  item.rootCauseEntity = res[0];
                   this.confirmValidateOrInvalidate(item);
                 })
                 .catch((err) => this.$snotify.error(err, "Erro."));

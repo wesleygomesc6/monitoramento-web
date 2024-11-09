@@ -32,7 +32,7 @@
           </v-col>
         </v-row>
         <v-alert v-else border="top" colored-border dense type="info">
-          Este problema possui comentarios.
+          Este problema não possui comentarios.
         </v-alert>
         <v-row align="center" v-for="(value, i) in comments" :key="i">
           <v-col cols="12" sm="1">
@@ -89,7 +89,7 @@ export default {
     deleteComment(id) {
       let index = this.comments.indexOf(id);
       this.$axios
-        .$delete(`/comentarios/${id}`)
+        .$delete(`/comments/${id}`)
         .then(this.comments.splice(index, 1))
         .catch((err) => this.$snotify.error(err, "Erro."));
     },
@@ -98,8 +98,8 @@ export default {
     },
     getCommentsProblem() {
       this.$axios
-        .$get(`/comentarios?idProblema=${this.id}`)
-        .then((res) => (this.comments = res.content))
+        .$get(`/comments?idProblema=${this.id}`)
+        .then((res) => (this.comments = res))
         .catch((err) => this.$snotify.error(err, "Erro."));
     },
   },

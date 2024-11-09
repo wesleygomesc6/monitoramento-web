@@ -1,94 +1,160 @@
 {
-    "problemas": {
-        "content": [
-            {
-                "id": 1,
-                "problemId": "kl9erdkfalnjd",
-                "displayId": "Lentidão",
-                "title": "O tempo de resposta aumentou",
-                "startTime": "2024-11-08T14:14:27",
-                "endTime": "2024-11-08T14:16:27",
-                "duracao": "2 minutos",
-                "severityLevel": "Desastre",
-                "impactLevel": "Serviço",
-                "impactLevels": [
-                    {
-                        "id": 1,
-                        "name": "service"
-                    },
-                    {
-                        "id": 2,
-                        "name": "host"
-                    }
-                ],
-                "status": "closed",
-                "validated": false,
-                "businessImpact": 1,
-                "rootCauseEntity": {
-                    "id": 1,
-                    "entityId": "jldakjpooff--fdsak",
-                    "name": "Entidade modelo",
-                    "entityType": {
-                        "id": 1,
-                        "name": "Host"
-                    }
-                },
-                "affectedEntities": [
-                    {
-                        "id": 3,
-                        "entityId": "itiurumvlcapopoo",
-                        "name": "Ouvidoria",
-                        "entityType": {
-                            "id": 3,
-                            "name": "app"
-                        }
-                    }
-                ],
-                "impactedEntities": [],
-                "evidences": [
-                    {
-                        "id": 1,
-                        "entityId": "jldakjpooff--fdsak",
-                        "name": "Entidade modelo",
-                        "entityType": {
-                            "id": 1,
-                            "name": "Host"
-                        }
-                    }
-                ],
-                "solver": ""
-            }
-        ]
-    },
-    "entities": {
-        "content": [
-            {
-                "id": 1,
-                "entityId": "jldakjpooff--fdsak",
-                "name": "Entidade modelo",
-                "entityType": {
-                    "id": 1,
-                    "name": "Host"
-                }
-            },
-            {
-                "id": 2,
-                "entityId": "cpjfgdaslkmkk",
-                "name": "CRP",
-                "entityType": {
-                    "id": 2,
-                    "name": "WebService"
-                }
-            },
-            {
-                "id": 3,
-                "entityId": "itiurumvlcapopoo",
-                "name": "Ouvidoria",
-                "entityType": {
-                    "id": 3,
-                    "name": "app"
-                }
-            }
-        ]
+  "problemas": [
+    {
+      "id": 1,
+      "problemId": "kl9erdkfalnjd",
+      "displayId": "Lentidão",
+      "title": "O tempo de resposta aumentou",
+      "startTime": "2024-11-08T14:14:27",
+      "endTime": "2024-11-08T14:16:27",
+      "duracao": "2 minutos",
+      "severityLevel": "Desastre",
+      "impactLevel": "Serviço",
+      "impactLevels": [
+        {
+          "id": 1,
+          "name": "service"
+        },
+        {
+          "id": 2,
+          "name": "host"
+        }
+      ],
+      "status": "CLOSED",
+      "validated": false,
+      "businessImpact": "1",
+      "rootCauseEntity": {
+        "id": 2,
+        "entityId": "cpjfgdaslkmkk",
+        "name": "CRP",
+        "entityType": {
+          "id": 2,
+          "name": "WebService"
+        }
+      },
+      "affectedEntities": [
+        {
+          "id": 3,
+          "entityId": "itiurumvlcapopoo",
+          "name": "Ouvidoria",
+          "entityType": {
+            "id": 3,
+            "name": "app"
+          }
+        }
+      ],
+      "impactedEntities": [
+        {
+          "id": 1,
+          "entityId": "jldakjpooff--fdsak",
+          "name": "Entidade modelo",
+          "entityType": {
+            "id": 1,
+            "name": "Host"
+          }
+        },
+        {
+          "id": 3,
+          "entityId": "itiurumvlcapopoo",
+          "name": "Ouvidoria",
+          "entityType": {
+            "id": 3,
+            "name": "app"
+          }
+        }
+      ],
+      "evidences": [
+        {
+          "id": 1,
+          "entityId": "jldakjpooff--fdsak",
+          "name": "Entidade modelo",
+          "entityType": {
+            "id": 1,
+            "name": "Host"
+          }
+        }
+      ],
+      "solver": "Wesley Carvalho"
     }
+  ],
+  "comments": [
+    {
+      "authorName": "wesleycarvalho",
+      "content": "Teste de inserção de comentários.",
+      "problem": {
+        "id": 1
+      },
+      "id": 1
+    },
+    {
+      "authorName": "wesleycarvalho",
+      "content": "O problema retornou após o deploy",
+      "problem": {
+        "id": 1
+      },
+      "id": 2
+    }
+  ],
+  "entities": [
+    {
+      "id": 1,
+      "entityId": "jldakjpooff--fdsak",
+      "name": "Entidade modelo",
+      "entityType": {
+        "id": 1,
+        "name": "Host"
+      }
+    },
+    {
+      "id": 2,
+      "entityId": "cpjfgdaslkmkk",
+      "name": "CRP",
+      "entityType": {
+        "id": 2,
+        "name": "WebService"
+      }
+    },
+    {
+      "id": 3,
+      "entityId": "itiurumvlcapopoo",
+      "name": "Ouvidoria",
+      "entityType": {
+        "id": 3,
+        "name": "app"
+      }
+    }
+  ],
+  "impact-levels": [
+    {
+      "id": 1,
+      "name": "service"
+    },
+    {
+      "id": 2,
+      "name": "host"
+    },
+    {
+      "id": 3,
+      "name": "WebService"
+    }
+  ],
+  "entity-types": [
+    {
+      "id": 1,
+      "name": "SERVICE"
+    },
+    {
+      "id": 2,
+      "name": "HOST"
+    },
+    {
+      "id": 3,
+      "name": "DATABASE"
+    }
+  ],
+  "solvers": [
+    "Wesley Carvalho",
+    "John Doe",
+    "Mary Jayne"
+  ]
 }
